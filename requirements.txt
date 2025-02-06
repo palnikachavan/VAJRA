@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+pandas
+xmltodict
+pyshark
+logging
+skyfield
+flask
+networkx
