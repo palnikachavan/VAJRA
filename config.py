@@ -8,6 +8,10 @@ NASA_API_KEY = os.getenv('NASA_API_KEY', 'AnSQx7gOblYXG0pUrIKtTcaLeLDxdMfCt80aed
 PEERINGDB_TOKEN = os.getenv('PEERINGDB_TOKEN', 'fLrf9Ovq.BYQ0AjiXwgm66qswYO97acGlVdIfI8NX')
 # N2YO_TOKEN = os.getenv('N2YO_TOKEN', 'C4SLGL-TUJ2WH-KR5C8P-5EOH')
 
+# Environment variables for Razorpay credentials
+RAZORPAY_API_KEY = os.getenv("rzp_live_JCExPjTteNgBfp")
+RAZORPAY_API_SECRET = os.getenv("FIzzzQeXFAJRACGj4TRjojYd")
+
 # Network Interface for Traffic Monitoring
 MONITOR_INTERFACE = os.getenv('MONITOR_INTERFACE', 'eth0')
 

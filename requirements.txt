@@ -7,3 +7,4 @@ logging
 skyfield
 flask
 networkx
+razorpay==0.2.0

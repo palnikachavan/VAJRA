@@ -1,0 +1,4 @@
+venv
+vajra/
+.env
+*.env

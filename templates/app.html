@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Pay $51 using Razorpay</h2>
+    <button id="payBtn">Pay Now</button>
+
+    <script>
+        document.getElementById('payBtn').addEventListener('click', function () {
+            fetch('/create_order', { method: 'POST' })
+                .then(response => response.json())
+                .then(order => {
+                    var options = {
+                        "key": "rzp_live_JCExPjTteNgBfp",
+                        "amount": order.amount,
+                        "currency": order.currency,
+                        "name": "Test Payment",
+                        "description": "Test Transaction",
+                        "order_id": order.id,
+                        "handler": function (response) {
+                            fetch('/verify_payment', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: new URLSearchParams({
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            }).then(res => {
+                                if (res.redirected) {
+                                    window.location.href = res.url;
+                                }
+                            });
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                });
+        });
+    </script>
+</body>
+</html>
