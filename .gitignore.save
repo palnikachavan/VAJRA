@@ -1,5 +1,5 @@
 venv
 vajra/
 .env
-config
+config.py
 *.env
