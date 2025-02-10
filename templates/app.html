@@ -7,7 +7,7 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-    <h2>Pay $51 using Razorpay</h2>
+    <h2>Pay order.amount using Razorpay</h2>
     <button id="payBtn">Pay Now</button>
 
     <script>
@@ -16,7 +16,7 @@
                 .then(response => response.json())
                 .then(order => {
                     var options = {
-                        "key": "rzp_live_JCExPjTteNgBfp",
+                        "key": "rzp_test_zJLa0siNBO1NL1",
                         "amount": order.amount,
                         "currency": order.currency,
                         "name": "Test Payment",

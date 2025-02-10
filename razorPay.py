@@ -18,14 +18,19 @@ def app_create():
 @app.route('/create_order', methods=['POST'])
 def create_order():
     try:
-        amount = 5100  
+        data = request.get_json()  
+        amount = data.get("amount")
+
+        if not amount:
+            return jsonify({"status": "error", "message": "Amount is required"}), 400
+
         order_data = {
-            "amount": amount,
-            "currency": "USD",
-            "payment_capture": "1"
+            "amount": int(amount),
+            "currency": "USD"
         }
         order = razorpay_client.order.create(data=order_data)
         return jsonify(order)
+    
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 400
 

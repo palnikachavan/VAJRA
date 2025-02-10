@@ -150,4 +150,3 @@ def enhanced_traffic_monitoring():
 
 if __name__ == "__main__":
     enhanced_traffic_monitoring()
-    print("x")
